@@ -1,0 +1,41 @@
+<mat-toolbar color="white" class="navbar">
+  <a class="linkedpages" routerLink="../../overview">Overview</a>
+  <a class="linkedpages" routerLink="../passive-voice-fix">Passive Voice</a>
+  <a class="linkedpages" routerLink="../wordiness-fix">Wordiness</a>
+  <a class="linkedpages" routerLink="../academic-style-fix">Academic Style</a>
+  <a class="linkedpages" routerLink="../grammar-fix">Grammar</a>
+  <a class="linkedpages" routerLink="../nominalizations-fix">Nominalizations</a>
+  <a class="linkedpages" routerLink="../sentences-fix">Sentences</a>
+  <a class="linkedpages" routerLink="../eggcorns-fix">Eggcorns</a>
+  <a class="linkedpages" routerLink="../transitions-fix">Transitions</a>
+  <a class="linkedpages" (click)="startOverClick()" routerLink="">Start Over</a>
+</mat-toolbar>
+
+<div class="alert-box" [style.background-color]="eggcornsAlertColor">
+  <h5 class="box">{{ totalEggcorns }} instances ({{ eggcornsScore }}% of sentences)</h5>
+    <b class="box">Goal: 0 errors </b>
+</div>
+
+<mat-toolbar color="white" class="category">
+  <mat-toolbar-row class="title"><b>Eggcorns</b></mat-toolbar-row>
+  <mat-toolbar-row class="description">{{eggcornsFeedback}}</mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+  <div class="column1">
+    <textarea id="userinput" name="userinput">{{ message }}</textarea>
+    <button (click)="reHighlight()" class="rehighlight">Re-highlight</button>
+  </div>
+
+  <div class="column2">
+    <h1 class="feedback"><b>Eggcorns Found - {{totalEggcorns}} instance(s)</b></h1>
+    <table>
+			<td>
+				<tr *ngFor="let tableData of eggcornsUserTable.find">{{tableData}}</tr>
+      </td>
+      <td>
+        <tr *ngFor="let tableData of eggcornsUserTable.suggestion">{{tableData}}</tr>
+      </td>
+		</table>
+  </div>
+</div>
